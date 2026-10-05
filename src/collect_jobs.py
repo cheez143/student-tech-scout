@@ -12,43 +12,42 @@ if not APP_ID or not APP_KEY:
     raise ValueError("ADZUNA_APP_ID and ADZUNA_APP_KEY must be set in the .env file.")
 
 de_cities = [
-    "Berlin",
-    "München",
-    "Hamburg",
-    "Frankfurt",
+    "Aachen",
     "Köln",
     "Düsseldorf",
-    "Stuttgart",
-    "Aachen"
+    "Bonn",
+    "Dortmund",
+    "Essen"
 ]
 
 nl_cities = [
-    "Amsterdam",
-    "Rotterdam",
-    "Hague",
-    "Utrecht",
+    "Maastricht",
+    "Heerlen",
+    "Sittard",
+    "Venlo",
     "Eindhoven"
 ]
 
-roles = [
-    "Data Scientist",
+tech_roles = [
+    "Data Science",
     "Data Analyst",
     "Machine Learning",
-    "AI Engineer",
-    "Software Engineer",
-    "Backend Developer",
+    "Artificial Intelligence",
+    "Software Engineering",
+    "Backend",
     "DevOps",
-    "Cloud Engineer"
+    "Cloud",
+    "Cybersecurity"
 ]
 
 jobs = []
 
 print("---")
-print(f"Searching for jobs in {len(de_cities)} German cities for {len(roles)} roles.")
+print(f"Searching for jobs in {len(de_cities)} German cities for {len(tech_roles)} roles.")
 print("---")
 
 for city in de_cities:
-    for role in roles:
+    for role in tech_roles:
 
         print(f"Searching: {role} in {city}")
 
@@ -80,11 +79,11 @@ for city in de_cities:
             })
 
 print("---")
-print(f"Searching for jobs in {len(nl_cities)} Dutch cities for {len(roles)} roles.")
+print(f"Searching for jobs in {len(nl_cities)} Dutch cities for {len(tech_roles)} roles.")
 print("---")
 
 for city in nl_cities:
-    for role in roles:
+    for role in tech_roles:
 
         print(f"Searching: {role} in {city}")
 
@@ -116,8 +115,7 @@ for city in nl_cities:
             })
 
 df = pd.DataFrame(jobs)
-df = df.drop_duplicates()
-df.to_csv("data/jobs_raw.csv", index=False)
+df.to_csv("data/raw/jobs_raw.csv", index=False)
 print("---")
-print(f"Saved {len(df)} unique job listings to data/jobs_raw.csv")
+print(f"Saved {len(df)} unique job listings to data/raw/jobs_raw.csv")
 print("---")
